@@ -1,18 +1,27 @@
 package com.kaminsky.walletproject.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
+
+import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Table(name = "wallet")
 public class Wallet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "wallet_id")
-    private Long walletId;
+    @GeneratedValue(generator = "uuid4")
+    @GenericGenerator(name = "UUID", strategy = "uuid4")
+    @Column(name = "wallet_id", columnDefinition = "uuid", updatable = false)
+    @JdbcTypeCode(SqlTypes.UUID)
+    private UUID walletId;
 
     @Column(nullable = false)
-    private Long amount;
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "operation_type", nullable = false)
@@ -23,19 +32,19 @@ public class Wallet {
         WITHDRAW
     }
 
-    public Long getWalletId() {
+    public UUID getWalletId() {
         return walletId;
     }
 
-    public void setWalletId(Long walletId) {
+    public void setWalletId(UUID walletId) {
         this.walletId = walletId;
     }
 
-    public Long getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

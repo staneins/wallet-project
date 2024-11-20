@@ -8,7 +8,7 @@
 
     <changeSet id="1" author="admin">
         <createTable tableName="wallet">
-            <column name="wallet_id" type="bigint">
+            <column name="wallet_id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="amount" type="bigint">
@@ -18,12 +18,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet id="2" author="admin">
-        <addColumn tableName="wallet">
-            <column name="created_at" type="timestamp"/>
-        </addColumn>
     </changeSet>
 
 </databaseChangeLog>
