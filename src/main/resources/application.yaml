@@ -21,7 +21,7 @@ spring:
                 jdbc.batch_size: 20
                 dialect: org.hibernate.dialect.PostgreSQLDialect
     datasource:
-        url: jdbc:postgresql://localhost:5432/walletDB
+        url: jdbc:postgresql://postgres:5432/walletDB
         username: walletDB
         password: root
         hikari:
@@ -51,6 +51,6 @@ spring:
 logging:
     level:
         root: INFO
-        com.javarush.jira: INFO
-        com.javarush.jira.common.config.MvcConfig: INFO
         org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: INFO
+        org.hibernate.SQL: DEBUG
+        org.hibernate.type.descriptor.sql.BasicBinder: TRACE

@@ -3,7 +3,6 @@ package com.kaminsky.walletproject.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
@@ -20,12 +19,16 @@ public class Wallet {
     @JdbcTypeCode(SqlTypes.UUID)
     private UUID walletId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "decimal")
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "operation_type", nullable = false)
     private OperationType operationType;
+
+    public Wallet() {
+
+    }
 
     public enum OperationType {
         DEPOSIT,

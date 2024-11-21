@@ -11,7 +11,7 @@
             <column name="wallet_id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="amount" type="bigint">
+            <column name="amount" type="decimal">
                 <constraints nullable="false"/>
             </column>
             <column name="operation_type" type="varchar(255)">
